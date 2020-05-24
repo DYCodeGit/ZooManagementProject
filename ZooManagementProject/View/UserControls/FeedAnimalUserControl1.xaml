@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="ZooManagementProject.View.UserControls.FeedAnimalUserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZooManagementProject.View.UserControls"
+             mc:Ignorable="d" 
+             DataContext="{Binding Main.MenuViewModel, Source={StaticResource Locator}}"
+            
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ListBox 
+                Margin="20 20 20 100"
+                x:Name="lbGroup"
+                ItemsSource="{Binding HungyAnumal}"
+                Style="{StaticResource HungryAnimalStyle}"/>
+
+
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                Command="{Binding ChangeTime}"
+                Height="50"
+                Width="100"  Margin="150 0 0 20"
+                Content="Змінити час"/>
+
+
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                Content="Покормить"
+                Height="50"
+                Command="{Binding Feed}"
+                Margin="20 0 0 20"
+                Width="100"/>
+
+
+        <Grid
+            Width="320"
+            Height="80"
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Місяць: " Width="50" Style="{StaticResource Basebtn}"/>
+                <TextBox Text="{Binding Month}" Style="{StaticResource baseTb}"/>
+                <TextBlock Text="Тиждень: " Width="60" Style="{StaticResource Basebtn}"/>
+                <TextBox Text="{Binding Day}" Style="{StaticResource baseTb}" Margin="0 0 0 0" />
+                <TextBlock Text="Година: " Width="50" Style="{StaticResource Basebtn}"/>
+                <TextBox Text="{Binding Hour}" Style="{StaticResource baseTb}"  Margin="0 0 0 0" />
+            </StackPanel>
+        </Grid>
+
+
+        <TextBlock Text="Невірний формат" Foreground="{Binding ErrorColor}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+
+
+        <TextBlock Text="Не вистачає їжі для всіх звірів" Foreground="{Binding NotEnoughFood}" Margin="0 0 0 70" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>
